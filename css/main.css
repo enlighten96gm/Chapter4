@@ -16,11 +16,23 @@ body {
 }
 
 .contaier {
-    min-width: 1170px;
+    min-width: 1200px;
     margin-left: 0 auto;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding: 60px 15px;
 }
+
+@media (max-width: 1200px) {
+    .contaier {
+        width: 800px;
+    }
+}
+
+@media (max-width: 829px) {
+    .contaier {
+        min-width: 600px;
+    }
+}
+
 
 .row {
     display: flex;
@@ -33,12 +45,40 @@ body {
 
 .sidebar {
     width: 270px;
+    min-width: 200px;
+}
+
+@media (max-width: 829px) {
+    .sidebar {
+        /* display: none; */
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin-left: 0 !important;
+        background-color: white;
+        padding: 15px;
+        box-shadow: 0px 0px 20px 4px rgb(0 0 0 / 37%);
+        overflow-y: scroll;
+        transform: translateX(-150%);
+    }
+}
+
+.main + .sidebar {
+    margin-left: 30px;
 }
 
 .cards-holder {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+@media (max-width: 599px) {
+    .cards-holder {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .cards-holder > .card-link {
@@ -511,4 +551,69 @@ background-color: #ffe074;
 
 .form-btn--submit:hover {
     background: #ffc8008f;
+}
+
+.toggle-sidebar {
+    position: absolute;
+    right: 15px;
+    top: 8px;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    display: block;
+    border: none;
+    padding: 0;
+}
+
+.menu-icon-wrapper {
+    /* width: 30px;
+    height: 30px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-icon {
+    position: relative;
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+}
+
+.menu-icon::before {
+    position: absolute;
+    left: 0;
+    top: -10px;
+    content: "";
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+    transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+}
+
+.menu-icon::after {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    content: "";
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+    transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+}
+
+.menu-icon.menu-icon-active {
+    background-color: transparent;
+}
+
+.menu-icon.menu-icon-active::before {
+    transform: rotate(45deg);
+    top: 0;
+    transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+}
+
+.menu-icon.menu-icon-active::after {
+    transform: rotate(45deg);
+    top: 0;
+    transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
 }
